@@ -10,8 +10,6 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.authtoken.models import Token
-from rest_framework.authtoken.views import ObtainAuthToken
-from django.middleware.csrf import get_token
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -31,7 +29,7 @@ class UserViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         user = User.objects.create_user(
                 username=serializer.validated_data['username'],
-                email=serializer.validated_data['email'],  # Optional email
+                email=serializer.validated_data['email'],  
                 password=serializer.validated_data['password']
             )
         return Response(
