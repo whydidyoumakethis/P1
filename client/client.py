@@ -10,7 +10,7 @@ def register(url=None):
     global BASE_URL
     if url and url.strip():
         BASE_URL = url.strip()
-    if not BASE_URL.startswith('http://', 'https://'):
+    if not BASE_URL.startswith(('http://', 'https://')):
         print('Invalid URL')
         return
     username = input('Enter username: ')
@@ -40,7 +40,7 @@ def login(url=None):
     if url and url.strip():
         BASE_URL = url.strip()
         print(f'Base URL set to {BASE_URL}')
-    if not BASE_URL.startswith('http://', 'https://'):
+    if not BASE_URL.startswith(('http://', 'https://')):
         print('Invalid URL')
         return
         
