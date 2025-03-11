@@ -127,5 +127,5 @@ class RatingViewSet(viewsets.ModelViewSet):
     serializer_class = RatingSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def get_serializer_context(self):
-        return {'request': self.request}
+    def get_queryset(self):
+        return Rating.objects.filter(user=self.request.user)
